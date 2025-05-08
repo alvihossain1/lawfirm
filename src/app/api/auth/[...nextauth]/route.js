@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 // var bcrypt = require('bcryptjs');
 
 async function processLogin(loginData){
-    const user = { name: 'Newaz Ben Alam', email: 'admin@gmail.com', image: '/avatars/shadcn.jpg', role: 'user' }
+    const user = { name: 'Newaz Ben Alam', email: 'admin@gmail.com', image: '/admin.jpg', role: 'user' }
     const password = '123456'
 
     if(!user){
