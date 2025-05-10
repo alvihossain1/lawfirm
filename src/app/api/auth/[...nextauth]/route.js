@@ -2,26 +2,26 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 // var bcrypt = require('bcryptjs');
 
-async function processLogin(loginData){
+async function processLogin(loginData) {
     const user = { name: 'Newaz Ben Alam', email: 'admin@gmail.com', image: '/admin.jpg', role: 'user' }
     const password = '123456'
 
-    if(!user){
+    if (!user) {
         throw new Error('No user found');
     }
-    else if(user.email !== loginData.email){
+    else if (user.email !== loginData.email) {
         throw new Error("Email doesn't match");
     }
-    else if(password !== loginData.password){
+    else if (password !== loginData.password) {
         throw new Error("Password doesn't match");
     }
-    else if(password === loginData.password){
+    else if (password === loginData.password) {
         return user
     }
-    else{
+    else {
         throw new Error("There was a problem");
     }
-    
+
 }
 
 export const authOptions = {
@@ -60,12 +60,24 @@ export const authOptions = {
                 }
             };
         },
-        
+
     },
     session: {
         strategy: "jwt",
     },
     secret: process.env.NEXTAUTH_SECRET,
+    cookies: {
+        sessionToken: {
+            name: "tokenx",
+            options: {
+                httpOnly: true,
+                sameSite: "lax",
+                secure: process.env.NODE_ENV === "production", // or true if using HTTPS in development
+                path: "/",
+            },
+        },
+        // Define other cookies if needed (e.g., callbackUrl, csrfToken, etc.)
+    },
     pages: {
         signIn: "/login",
     }
