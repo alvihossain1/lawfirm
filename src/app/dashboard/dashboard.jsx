@@ -11,7 +11,7 @@ import {
 
 export default function Dashboard({ children }) {
     return (
-        <AuthCheck>
+        
             <div>
                 <SidebarProvider
                     style={
@@ -29,6 +29,5 @@ export default function Dashboard({ children }) {
                     </SidebarInset>
                 </SidebarProvider>
             </div>
-        </AuthCheck>
     );
 }
