@@ -22,12 +22,11 @@ export default function Page() {
 
 
 
-        <div className="grid grid-cols-12 gap-4 md:gap-6">
-
-          <Card className="col-span-6 md:col-span-3">
+        <div className="grid grid-cols-12 gap-4 md:gap-6 mb-6">
+          <Card className="col-span-12 lg:col-span-3">
             <CardHeader>
               <CardTitle className='text-lg'>
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-3">
                   <span className="bg-amber-600 text-white p-3 rounded-full">
                     <Scale />
                   </span>
@@ -39,10 +38,10 @@ export default function Page() {
               </CardContent>
             </CardHeader>
           </Card>
-          <Card className="col-span-6 md:col-span-3">
+          <Card className="col-span-12 lg:col-span-3">
             <CardHeader>
               <CardTitle className='text-lg'>
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-3">
                   <span className="bg-rose-600 text-white p-3 rounded-full">
                     <ArrowUpDown />
                   </span>
@@ -54,10 +53,10 @@ export default function Page() {
               </CardContent>
             </CardHeader>
           </Card>
-          <Card className="col-span-6 md:col-span-3">
+          <Card className="col-span-12 lg:col-span-3">
             <CardHeader>
               <CardTitle className='text-lg'>
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-3">
                   <span className="bg-teal-600 text-white p-3 rounded-full">
                     <Gavel />
                   </span>
@@ -69,10 +68,11 @@ export default function Page() {
               </CardContent>
             </CardHeader>
           </Card>
-
-          <Card className='col-span-12 md:col-span-6'>
+        </div>
+        <div className="grid grid-cols-12 gap-4 md:gap-6 mb-6">
+          <Card className='col-span-12 lg:col-span-6'>
             <CardTitle>
-              <CardHeader className='text-lg md:text-xl'>Upcoming Appointment</CardHeader>
+              <CardHeader className='text-lg lg:text-xl'>Upcoming Appointment</CardHeader>
             </CardTitle>
             <CardContent>
               <div className="flex justfiy-start items-start gap-4">
@@ -90,7 +90,7 @@ export default function Page() {
               </div>
             </CardContent>
           </Card>
-          <Card className='col-span-12 md:col-span-6'>
+          <Card className='col-span-12 lg:col-span-6'>
             <CardTitle>
               <CardHeader className='text-lg md:text-xl'>Recent Message</CardHeader>
             </CardTitle>

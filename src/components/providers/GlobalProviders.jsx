@@ -22,7 +22,9 @@ export const GlobalProvider = ({ children }) => {
     return (
         <GlobalContext.Provider value={{ theme, setTheme }}>
             <div className={theme}>
-                {children}
+                <div className="dark:text-white">
+                    {children}
+                </div>
             </div>
         </GlobalContext.Provider>
     )

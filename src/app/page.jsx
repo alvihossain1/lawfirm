@@ -12,7 +12,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 flex flex-col justify-center items-center h-full text-center">
-          <h1 className="text-5xl font-bold leading-tight mb-4">Enhance your Law firm community</h1>
+          <h1 className="text-5xl font-bold leading-tight mb-4">Enhance your Law at {process.env.APP_NAME}</h1>
           <p className="text-lg text-gray-300 mb-8">Discover amazing features and services that await you.</p>
           <Link href='/login'>
             <button className='py-4 px-6 bg-neutral-200 text-neutral-800 hover:bg-neutral-300 rounded-lg'>Get Started</button>
