@@ -1,15 +1,19 @@
+'use client'
 import Dashboard from '@/app/dashboard/dashboard'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { Download } from 'lucide-react'
+import { Download, SquareChevronLeft } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 export default function page() {
+    const router = useRouter()
     return (
         <Dashboard>
+            <Button onClick={() => router.back()} className='mb-3'> <SquareChevronLeft /> Go Back</Button>
             <Card>
                 <CardHeader>
                     <CardTitle>Attorney Info</CardTitle>
@@ -40,7 +44,7 @@ export default function page() {
                                 <span className='font-bold'>Professional Memberships:</span> Member of American Bar Association, Florida Business Law Section, and Tax Professionals Network.
                             </p>
                         </div>
-                        <p className='mb-3'>Case Status: <Badge variant="outline">Confirmed</Badge></p>
+                        <p className='mb-3'>Case Status: <Badge variant="outline" className='border-2 border-green-600 text-green-600 font-bold'>Confirmed</Badge></p>
                     </div>
                     <Separator className='my-3' />
                     <div>

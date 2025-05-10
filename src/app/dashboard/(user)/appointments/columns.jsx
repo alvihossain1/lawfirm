@@ -16,6 +16,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { ArrowUpDown } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 export const columns = [
     {
@@ -47,6 +48,7 @@ export const columns = [
     {
         id: "action",
         cell: ({ row }) => {
+            const router = useRouter(); // Initialize the router
             const payment = row.original
 
             return (
@@ -60,7 +62,7 @@ export const columns = [
                     <DropdownMenuContent align="end">
                         {/* <DropdownMenuLabel>Actions</DropdownMenuLabel> */}
                         {/* <DropdownMenuSeparator /> */}
-                        <DropdownMenuItem onClick={() => { console.log(row.original.id) }}>View</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => { router.push(`/dashboard/appointments/${row.original.id}`) }}>View</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             )
