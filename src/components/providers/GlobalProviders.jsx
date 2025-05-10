@@ -7,7 +7,7 @@ export const useGlobal = () => useContext(GlobalContext)
 
 export const GlobalProvider = ({ children }) => {
 
-    const [theme, setThemeState] = useState('light')
+    const [theme, setThemeState] = useState('dark')
 
     useEffect(() => {
         const localTheme = localStorage.getItem('theme')
