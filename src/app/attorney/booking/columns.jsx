@@ -16,39 +16,54 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { ArrowUpDown } from "lucide-react"
-import { useRouter } from "next/navigation"
+import { CardHeader } from "@/components/ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export const columns = [
     {
-        accessorKey: "caseType",
+        accessorKey: "clientName",
         header: ({ column }) => {
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
-                    Case Type
+                    Client Name
                     <ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
             )
         },
+        cell: ({ row }) => {
+            return (
+                <div className="flex items-center gap-2">
+                    <Avatar>
+                        <AvatarImage src="https://github.com/shadcn.png" />
+                        <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                    <p>{row.original.clientName}</p>
+                </div>
+            )
+        }
     },
     {
-        accessorKey: "attorney",
-        header: "Attorney",
+        accessorKey: "caseType",
+        header: "Case Type",
     },
     {
-        accessorKey: "caseStatus",
-        header: "Case Status",
+        accessorKey: "file",
+        header: "File",
     },
     {
         accessorKey: "appointmentDate",
         header: "Appointment Date",
     },
     {
+        accessorKey: "time",
+        header: "Time",
+    },
+    {
         id: "action",
         cell: ({ row }) => {
-            const router = useRouter(); // Initialize the router
             const payment = row.original
 
             return (
@@ -62,7 +77,7 @@ export const columns = [
                     <DropdownMenuContent align="end">
                         {/* <DropdownMenuLabel>Actions</DropdownMenuLabel> */}
                         {/* <DropdownMenuSeparator /> */}
-                        <DropdownMenuItem onClick={() => { router.push(`/dashboard/appointments/${row.original.id}`) }}>View</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => { console.log(row.original.id) }}>Download</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             )

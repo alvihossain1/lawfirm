@@ -1,11 +1,12 @@
-import Dashboard from "../../dashboard"
+import Dashboard from "@/app/dashboard"
 import { columns } from "./columns"
 import { DataTable } from "./data-table"
 
 async function getData() {
     // Fetch data from your API here.
     return [
-        {id: '101', date: '05 May,2025', attorneyName: 'Rafsan Mehede', fileName: 'asfasf', fileType: 'PDF', action: 'take action'   },     
+        {id: '101', clientName: 'James Alonso', caseType: 'xyz', file: 'asfasf', appointmentDate: 'PDF', time: '8:03 AM', action: 'take action'   },     
+        {id: '102', clientName: 'Maven Jones', caseType: 'zzs', file: 'Rigelx', appointmentDate: 'PDF', time: '8:03 AM', action: 'take action'   },     
    
     ]
 }

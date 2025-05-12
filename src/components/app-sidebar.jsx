@@ -153,27 +153,75 @@ const userData = {
   navMain: [
     {
       title: "Dashboard",
-      url: "/dashboard",
+      url: "/users/dashboard",
       icon: IconDashboard,
     },
     {
       title: "Attorney",
-      url: "/dashboard/attorney",
+      url: "/users/attorney",
       icon: Gavel,
     },
     {
       title: "Appointments",
-      url: "/dashboard/appointments",
+      url: "/users/appointments",
       icon: CalendarClock,
     },
     {
       title: "Files",
-      url: "/dashboard/files",
+      url: "/users/files",
       icon: Files,
     },
     {
       title: "Messages",
-      url: "/dashboard/messages",
+      url: "/users/messages",
+      icon: MessageSquareText,
+    },
+
+  ],
+  navSecondary: [
+    {
+      title: "Settings",
+      url: "/dashboard/settings",
+      icon: Settings,
+    },
+    {
+      title: "Help & Info",
+      url: "/dashboard/help_info",
+      icon: IconHelp,
+    },
+  ],
+}
+
+const attorneyData = {
+  navMain: [
+    {
+      title: "Dashboard",
+      url: "/attorney/dashboard",
+      icon: IconDashboard,
+    },
+    {
+      title: "My Cases",
+      url: "/attorney/mycases",
+      icon: Gavel,
+    },
+    {
+      title: "Booking",
+      url: "/attorney/booking",
+      icon: CalendarClock,
+    },
+    {
+      title: "Availability",
+      url: "/attorney/availability",
+      icon: Files,
+    },
+    {
+      title: "Clients",
+      url: "/attorney/clients",
+      icon: MessageSquareText,
+    },
+    {
+      title: "Messages",
+      url: "/attorney/messages",
       icon: MessageSquareText,
     },
 
@@ -205,20 +253,20 @@ export function AppSidebar({ ...props }) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
-              <Link href="/dashboard">
+              <div className="cursor-default">
                 <IconInnerShadowTop className="!size-5" />
                 <span className="text-lg font-semibold">{process.env.APP_NAME}</span>
-              </Link>
+              </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        {session?.user && <NavMain items={session?.user?.role === 'user' ? userData.navMain : []} />}
+        {session?.user && <NavMain items={session?.user?.role === 'user' ? userData.navMain : session?.user?.role === 'attorney' ? attorneyData.navMain : []} />}
          {/* <NavDocuments items={data.documents} />  */}        
       </SidebarContent>
       <SidebarFooter>
-      {session?.user && <NavSecondary items={userData.navSecondary }/>}
+      {session?.user && <NavSecondary items={session?.user?.role === 'user' ? userData.navSecondary : session?.user?.role === 'attorney' ? attorneyData.navSecondary : []}/>}
         {session?.user && <NavUser user={session?.user} />}
       </SidebarFooter>
     </Sidebar>)

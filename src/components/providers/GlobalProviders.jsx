@@ -10,7 +10,7 @@ export const GlobalProvider = ({ children }) => {
     const [theme, setThemeState] = useState('dark')
 
     useEffect(() => {
-        const localTheme = localStorage.getItem('theme')
+        const localTheme = localStorage.getItem('theme') || 'dark'
         setTheme(localTheme)
     }, [theme])
 

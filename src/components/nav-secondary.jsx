@@ -25,7 +25,7 @@ export function NavSecondary({
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
               <Link href={item.url}>
-                <SidebarMenuButton className={`py-5 md:px-3 text-[1.1rem] mb-1 hover:bg-purple-400 hover:text-white transition-all duration-300 ${pathname === item.url ? 'bg-purple-400 text-white' : ''}`} tooltip={item.title}>
+                <SidebarMenuButton className={`py-5 md:px-3 text-[1.1rem] mb-1 transition-all duration-300 ${pathname === item.url ? 'bg-purple-400 text-white hover:bg-neutral-600 dark:bg-purple-400 dark:text-white hover:bg-purple-400' : 'hover:bg-neutral-200 dark:hover:bg-neutral-50/20'}`} tooltip={item.title}>
 
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>

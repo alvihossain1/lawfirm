@@ -16,7 +16,8 @@
 // }
 
 
-import Dashboard from "../../dashboard"
+
+import Dashboard from "@/app/dashboard"
 import { columns } from "./columns"
 import { DataTable } from "./data-table"
 

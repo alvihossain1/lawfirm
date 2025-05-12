@@ -1,8 +1,8 @@
 import React from 'react'
-import Dashboard from '../../dashboard'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from '@/components/ui/button'
+import Dashboard from '@/app/dashboard'
 
 
 export default function page() {

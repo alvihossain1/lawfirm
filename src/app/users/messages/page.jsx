@@ -1,11 +1,10 @@
-import React from 'react'
-import Settings from '@/components/all/Settings'
 import Dashboard from '@/app/dashboard'
+import React from 'react'
 
 export default function page() {
   return (
     <Dashboard>
-        <Settings />
+        <p>Nothing to display here...</p>
     </Dashboard>
   )
 }

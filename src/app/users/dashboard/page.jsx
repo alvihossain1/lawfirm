@@ -1,5 +1,4 @@
 import React from 'react'
-import Dashboard from './dashboard'
 import { ChartAreaInteractive } from "@/components/chart-area-interactive"
 import { DataTable } from "@/components/data-table"
 import { Gavel } from "lucide-react"
@@ -14,6 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { ArrowUpDown, Scale } from "lucide-react";
+import Dashboard from '@/app/dashboard'
 
 export default function Page() {
   return (
@@ -68,8 +68,7 @@ export default function Page() {
               </CardContent>
             </CardHeader>
           </Card>
-        </div>
-        <div className="grid grid-cols-12 gap-4 md:gap-6 mb-6">
+          <div className='col-span-12 lg:col-span-3'></div>
           <Card className='col-span-12 lg:col-span-6'>
             <CardTitle>
               <CardHeader className='text-lg lg:text-xl'>Upcoming Appointment</CardHeader>

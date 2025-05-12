@@ -46,7 +46,6 @@ export function NavUser({ user }) {
 
   function userLogOut(){
     signOut()
-    router.refresh()
   }
 
   return (
