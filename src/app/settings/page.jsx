@@ -1,6 +1,6 @@
 import React from 'react'
-import Dashboard from '../../dashboard'
 import Settings from '@/components/all/Settings'
+import Dashboard from '../dashboard'
 
 export default function page() {
   return (
