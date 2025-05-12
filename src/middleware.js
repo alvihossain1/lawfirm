@@ -15,16 +15,17 @@ export async function middleware(request) {
         const isUserRoute = pathname.startsWith('/users');
         const isAttorneyRoute = pathname.startsWith('/attorney');
         const isAdminRoute = pathname.startsWith('/admin');
+        const isDashboardRoute = pathname.startsWith('/dashboard');
 
-        if (role === 'user' && !isUserRoute) {
+        if (role === 'user' && !isUserRoute && !isDashboardRoute) {
             return NextResponse.redirect(new URL('/users/dashboard', request.url)); // Redirect user to their dashboard
         }
 
-        if (role === 'attorney' && !isAttorneyRoute) {
+        if (role === 'attorney' && !isAttorneyRoute && !isDashboardRoute) {
             return NextResponse.redirect(new URL('/attorney/dashboard', request.url)); // Redirect attorney to their dashboard
         }
 
-        if (role === 'admin' && !isAdminRoute) {
+        if (role === 'admin' && !isAdminRoute && !isDashboardRoute) {
             return NextResponse.redirect(new URL('/admin/dashboard', request.url)); // Redirect admin to their dashboard
         }
 
