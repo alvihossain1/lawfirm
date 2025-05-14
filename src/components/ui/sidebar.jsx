@@ -634,7 +634,7 @@ function SidebarMenuSubButton({
   className,
   ...props
 }) {
-  const Comp = asChild ? Slot : "a"
+  const Comp = asChild ? Slot : "div"
 
   return (
     (<Comp

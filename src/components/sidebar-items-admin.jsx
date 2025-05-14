@@ -34,9 +34,8 @@ export function SidebarItemsAdmin({
           <div key={index}>
             {item?.items ? (
               <Collapsible
-
                 asChild
-                defaultOpen={item.isActive}
+                defaultOpen={pathname.includes(item.title.toLowerCase())}
                 className="group/collapsible"
               >
                 <SidebarMenuItem>
@@ -48,14 +47,16 @@ export function SidebarItemsAdmin({
                     </SidebarMenuButton>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
-                    <SidebarMenuSub>
+                    <SidebarMenuSub className='mx-0.5'>
                       {item.items?.map((subItem) => (
                         <SidebarMenuSubItem key={subItem.title}>
-                          <SidebarMenuSubButton href={subItem.url} className={`py-5 md:px-3 text-[1rem] transition-all duration-300 ${pathname === item.url ? 'bg-purple-400 text-white hover:bg-neutral-600 dark:bg-purple-400 dark:text-white hover:bg-purple-400' : 'hover:bg-neutral-200 dark:hover:bg-neutral-50/20'}`}>                         
+                          <Link href={subItem.url}>
+                            <SidebarMenuSubButton className={`py-5 md:px-3 text-[1rem] transition-all duration-300 ${pathname === subItem.url ? 'bg-purple-400 text-white hover:bg-neutral-600 dark:bg-purple-400 dark:text-white hover:bg-purple-400' : 'hover:bg-neutral-200 dark:hover:bg-neutral-50/20'}`}>
                               {item.icon && <item.icon />}
                               <span>{subItem.title}</span>
-                      
-                          </SidebarMenuSubButton>
+
+                            </SidebarMenuSubButton>
+                          </Link>
                         </SidebarMenuSubItem>
                       ))}
                     </SidebarMenuSub>
