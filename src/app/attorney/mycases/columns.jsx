@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-import { MoreHorizontal } from "lucide-react"
+import { File, MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -38,8 +38,13 @@ export const columns = [
         header: "Client Name",
     },
     {
-        accessorKey: "essentialFile",
-        header: "Essential File",
+        id: "essentialFile",
+        header: 'Essential File',
+        cell: ({ row }) => {
+            return (
+                <Button onClick={() => {console.log('Download file', row.original.essentialFile)}}><File /> Pdf</Button>
+            )
+        },
     },
     {
         accessorKey: "appointmentDate",

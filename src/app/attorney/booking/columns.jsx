@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-import { MoreHorizontal } from "lucide-react"
+import { File, MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -18,6 +18,7 @@ import {
 import { ArrowUpDown } from "lucide-react"
 import { CardHeader } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { useRouter } from "next/navigation"
 
 export const columns = [
     {
@@ -50,8 +51,13 @@ export const columns = [
         header: "Case Type",
     },
     {
-        accessorKey: "file",
-        header: "File",
+        id: "file",
+        header: 'File',
+        cell: ({ row }) => {
+            return (
+                <Button onClick={() => {console.log('Download file', row.original.essentialFile)}}><File /> Pdf</Button>
+            )
+        },
     },
     {
         accessorKey: "appointmentDate",
@@ -62,25 +68,24 @@ export const columns = [
         header: "Time",
     },
     {
-        id: "action",
-        cell: ({ row }) => {
-            const payment = row.original
-
-            return (
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                            <span className="sr-only">Open menu</span>
-                            <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        {/* <DropdownMenuLabel>Actions</DropdownMenuLabel> */}
-                        {/* <DropdownMenuSeparator /> */}
-                        <DropdownMenuItem onClick={() => { console.log(row.original.id) }}>Download</DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            )
+            id: "action",
+            cell: ({ row }) => {
+                const router = useRouter(); // Initialize the router    
+                return (
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" className="h-8 w-8 p-0">
+                                <span className="sr-only">Open menu</span>
+                                <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            {/* <DropdownMenuLabel>Actions</DropdownMenuLabel> */}
+                            {/* <DropdownMenuSeparator /> */}
+                            <DropdownMenuItem onClick={() => { router.push(`/attorney/booking/${row.original.id}`) }}>View</DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                )
+            },
         },
-    },
 ]

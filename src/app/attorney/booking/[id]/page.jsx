@@ -55,7 +55,7 @@ export default function page() {
                     <Separator className='my-3' />
                     <div>
                         <h1 className='mb-3'>Evidence</h1>
-                        <p className='mb-3'>N/A</p>
+                        <Button><Download/> Download Pdf</Button>
                     </div>
                 </CardContent>
             </Card>

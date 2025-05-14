@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sidebar"
 import Link from "next/link";
 import { usePathname } from 'next/navigation'
+import { ChevronRight } from "lucide-react";
 export function NavSecondary({
   items
 }) {
@@ -29,6 +30,7 @@ export function NavSecondary({
 
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
+                  {pathname !== item.url && pathname.includes(item.url) && <span className="ml-auto"><ChevronRight size={20}/></span>}
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>

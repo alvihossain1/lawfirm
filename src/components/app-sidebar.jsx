@@ -36,6 +36,7 @@ import { useAuth } from "./providers/AuthProvider"
 import { CalendarClock, Files, Gavel, Hammer, LogOut, MessageSquareText, Settings } from "lucide-react"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
+import { SidebarItemsAdmin } from "./sidebar-items-admin"
 
 // const data = {
 //   navMain: [
@@ -240,6 +241,110 @@ const attorneyData = {
   ],
 }
 
+const adminData = {
+  navMain: [
+    {
+      title: "Dashboard",
+      url: "/admin/dashboard",
+      icon: IconDashboard,
+    },
+    {
+      title: "Attorney",
+      url: "/admin/attorney",
+      icon: Gavel,
+    },
+    {
+      title: "Case Study",
+      url: "/admin/case_study",
+      icon: CalendarClock,
+    },
+    {
+      title: "Case Type",
+      url: "/admin/case_type",
+      icon: Files,
+    },
+  ],
+  navMainSecondary: [
+    {
+      title: "Payment",
+      url: "/admin/payment",
+      icon: MessageSquareText,
+      items: [
+        {
+          title: "Payment Method",
+          url: "/admin/payment_method",
+          icon: MessageSquareText,
+        },
+        {
+          title: "Payment List",
+          url: "/admin/payment_list",
+          icon: MessageSquareText,
+        },
+      ]
+    },
+  ],
+  navMainThird: [
+    {
+      title: "Category",
+      url: "/admin/category",
+      icon: MessageSquareText,
+      items: [
+        {
+          title: "Category",
+          url: "/admin/category",
+          icon: MessageSquareText,
+        },
+        {
+          title: "Tags",
+          url: "/admin/tags",
+          icon: MessageSquareText,
+        },
+        {
+          title: "Blogs",
+          url: "/admin/blogs",
+          icon: MessageSquareText,
+        },
+      ]
+    },
+  ],
+  navMainFourth: [
+    {
+      title: "Service",
+      url: "/admin/service",
+      icon: MessageSquareText,
+      items: [
+        {
+          title: "Service",
+          url: "/admin/service",
+          icon: MessageSquareText,
+        },
+        {
+          title: "News Letter",
+          url: "/admin/news_letter",
+          icon: MessageSquareText,
+        },
+        {
+          title: "Testimonial",
+          url: "/admin/testimonial",
+          icon: MessageSquareText,
+        },
+      ]
+    },
+  ],
+  navSecondary: [
+    {
+      title: "Settings",
+      url: "/dashboard/settings",
+      icon: Settings,
+    },
+    {
+      title: "Help & Info",
+      url: "/dashboard/help_info",
+      icon: IconHelp,
+    },
+  ],
+}
+
 export function AppSidebar({ ...props }) {
 
 
@@ -263,10 +368,18 @@ export function AppSidebar({ ...props }) {
       </SidebarHeader>
       <SidebarContent>
         {session?.user && <NavMain items={session?.user?.role === 'user' ? userData.navMain : session?.user?.role === 'attorney' ? attorneyData.navMain : []} />}
-         {/* <NavDocuments items={data.documents} />  */}        
+        {/* <NavDocuments items={data.documents} />  */}
+        {session?.user?.role === 'admin' && (
+          <div>
+            <SidebarItemsAdmin items={adminData.navMain} group={'Platform'} />
+            <SidebarItemsAdmin items={adminData.navMainSecondary} group={'Payment'} />
+            <SidebarItemsAdmin items={adminData.navMainThird} group={'Blogs'} />
+            <SidebarItemsAdmin items={adminData.navMainFourth} group={'Other'} />
+          </div>
+        )}
       </SidebarContent>
       <SidebarFooter>
-      {session?.user && <NavSecondary items={session?.user?.role === 'user' ? userData.navSecondary : session?.user?.role === 'attorney' ? attorneyData.navSecondary : []}/>}
+        {session?.user && <NavSecondary items={session?.user?.role === 'user' ? userData.navSecondary : session?.user?.role === 'attorney' ? attorneyData.navSecondary : session?.user?.role === 'admin' ? adminData.navSecondary : []} />}
         {session?.user && <NavUser user={session?.user} />}
       </SidebarFooter>
     </Sidebar>)

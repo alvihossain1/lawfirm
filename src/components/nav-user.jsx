@@ -44,7 +44,7 @@ export function NavUser({ user }) {
     console.log("THEME", theme)
   }, [])
 
-  function userLogOut(){
+  function userLogOut() {
     signOut()
   }
 
@@ -56,10 +56,10 @@ export function NavUser({ user }) {
             <SidebarMenuButton
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
-              <Avatar className="h-8 w-8 rounded-lg grayscale">
-                <AvatarImage src={user.image} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-              </Avatar>
+              <Avatar className="h-9 w-9 rounded-full">
+                    <AvatarImage className='object-cover object-center' src={user.image} alt={user.name} />
+                    <AvatarFallback className="rounded-full">CN</AvatarFallback>
+                </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">{user.name}</span>
                 <span className="text-muted-foreground truncate text-xs">
@@ -76,9 +76,9 @@ export function NavUser({ user }) {
             sideOffset={4}>
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.image} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <Avatar className="h-9 w-9 rounded-full">
+                    <AvatarImage className='object-cover object-center' src={user.image} alt={user.name} />
+                    <AvatarFallback className="rounded-full">CN</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">{user.name}</span>
@@ -102,13 +102,13 @@ export function NavUser({ user }) {
                 <IconNotification />
                 Notifications
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => {theme === 'light' ? setTheme('dark') : setTheme('light')}}>
+              <DropdownMenuItem onClick={() => { theme === 'light' ? setTheme('dark') : setTheme('light') }}>
                 {theme === 'light' ? <Lightbulb /> : <Moon />}
                 {theme === 'light' ? 'Swtich to dark' : 'Swtich to light'}
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => {userLogOut()}}>
+            <DropdownMenuItem onClick={() => { userLogOut() }}>
               <IconLogout />
               Log out
             </DropdownMenuItem>

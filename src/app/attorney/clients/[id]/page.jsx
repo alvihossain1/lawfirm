@@ -47,15 +47,8 @@ export default function page() {
                     </div>
                     <Separator className='my-3' />
                     <div>
-                        <h1 className='mb-3'>Booking Details</h1>
-                        <p className='mb-3'>Date: 12 May 2025</p>
-                        <p className='mb-3'>Time Slot: 10.00AM</p>
-                        <p className='mb-3'>Create Date: 12 May 2025</p>
-                    </div>
-                    <Separator className='my-3' />
-                    <div>
                         <h1 className='mb-3'>Evidence</h1>
-                        <p className='mb-3'>N/A</p>
+                        <Button><Download/> Download Pdf</Button>
                     </div>
                 </CardContent>
             </Card>
