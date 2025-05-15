@@ -20,8 +20,6 @@ import {
 } from "@tabler/icons-react"
 
 import { NavDocuments } from "@/components/nav-documents"
-import { NavMain } from "@/components/nav-main"
-import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
 import {
   Sidebar,
@@ -36,7 +34,7 @@ import { useAuth } from "./providers/AuthProvider"
 import { CalendarClock, Files, Gavel, Hammer, LogOut, MessageSquareText, Settings } from "lucide-react"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
-import { SidebarItemsAdmin } from "./sidebar-items-admin"
+import { SidebarItems } from "./sidebar-items"
 
 // const data = {
 //   navMain: [
@@ -149,6 +147,23 @@ import { SidebarItemsAdmin } from "./sidebar-items-admin"
 //     },
 //   ],
 // }
+const documents = [
+    {
+      name: "Data Library",
+      url: "#",
+      icon: IconDatabase,
+    },
+    {
+      name: "Reports",
+      url: "#",
+      icon: IconReport,
+    },
+    {
+      name: "Word Assistant",
+      url: "#",
+      icon: IconFileWord,
+    },
+  ]
 
 const userData = {
   navMain: [
@@ -367,19 +382,19 @@ export function AppSidebar({ ...props }) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        {session?.user && <NavMain items={session?.user?.role === 'user' ? userData.navMain : session?.user?.role === 'attorney' ? attorneyData.navMain : []} />}
-        {/* <NavDocuments items={data.documents} />  */}
+        {session?.user && <SidebarItems items={session?.user?.role === 'user' ? userData.navMain : session?.user?.role === 'attorney' ? attorneyData.navMain : []} />}
+        {/* <NavDocuments items={documents} />  */}
         {session?.user?.role === 'admin' && (
           <div>
-            <SidebarItemsAdmin items={adminData.navMain} group={'Platform'} />
-            <SidebarItemsAdmin items={adminData.navMainSecondary} group={'Payment'} />
-            <SidebarItemsAdmin items={adminData.navMainThird} group={'Blogs'} />
-            <SidebarItemsAdmin items={adminData.navMainFourth} group={'Other'} />
+            <SidebarItems items={adminData.navMain} group={'Platform'} />
+            <SidebarItems items={adminData.navMainSecondary} group={'Payment'} />
+            <SidebarItems items={adminData.navMainThird} group={'Blogs'} />
+            <SidebarItems items={adminData.navMainFourth} group={'Other'} />
           </div>
         )}
       </SidebarContent>
       <SidebarFooter>
-        {session?.user && <NavSecondary items={session?.user?.role === 'user' ? userData.navSecondary : session?.user?.role === 'attorney' ? attorneyData.navSecondary : session?.user?.role === 'admin' ? adminData.navSecondary : []} />}
+        {session?.user && <SidebarItems items={session?.user?.role === 'user' ? userData.navSecondary : session?.user?.role === 'attorney' ? attorneyData.navSecondary : session?.user?.role === 'admin' ? adminData.navSecondary : []} />}
         {session?.user && <NavUser user={session?.user} />}
       </SidebarFooter>
     </Sidebar>)

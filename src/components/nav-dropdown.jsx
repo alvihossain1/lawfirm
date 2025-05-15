@@ -25,7 +25,7 @@ export function NavDropDown({ user }) {
 
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+            <DropdownMenuTrigger asChild className='cursor-pointer hover:border hover:border-neutral-400 transition-all duration-100'>
                 <Avatar className="h-9 w-9 rounded-full">
                     <AvatarImage className='object-cover object-center' src={user.image} alt={user.name} />
                     <AvatarFallback className="rounded-full">CN</AvatarFallback>

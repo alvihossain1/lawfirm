@@ -20,6 +20,7 @@
 import Dashboard from "@/app/dashboard"
 import { columns } from "./columns"
 import { DataTable } from "./data-table"
+import { Card, CardContent } from "@/components/ui/card"
 
 async function getData() {
     // Fetch data from your API here.
@@ -47,7 +48,11 @@ export default async function DemoPage() {
     return (
         <Dashboard>
             <div className="container mx-auto py-10">
-                <DataTable columns={columns} data={data} />
+                <Card className='p-0 md:px-2'>
+                    <CardContent className='p-0 md:px-2'>
+                        <DataTable columns={columns} data={data} />
+                    </CardContent>
+                </Card>
             </div>
         </Dashboard>
     )

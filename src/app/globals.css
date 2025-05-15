@@ -25,6 +25,34 @@ button {
 
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(80, 80, 80); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(102, 102, 102);  
+}
+
+.bg-image{
+  
+  background: 
+   linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 59%, rgba(0, 0, 0, 0.3) 100%),
+   url('https://codetheweb.blog/assets/img/posts/css-advanced-background-images/mountains.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

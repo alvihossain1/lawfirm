@@ -38,7 +38,7 @@ export function NavUser({ user }) {
 
   const router = useRouter()
   const { isMobile } = useSidebar()
-  const { theme, setTheme } = useGlobal()
+  const { theme, setTheme, bgImage, swapImage } = useGlobal()
 
   useEffect(() => {
     console.log("THEME", theme)
@@ -98,12 +98,12 @@ export function NavUser({ user }) {
                 <IconCreditCard />
                 Billing
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconNotification />
-                Notifications
+              <DropdownMenuItem onClick={() => { bgImage === 'yes' ? swapImage('no') : swapImage('yes') }}>
+                {bgImage === 'yes' ? <Lightbulb /> : <Moon />}
+                {bgImage === 'yes' ? 'Remove background' : 'Apply background'}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => { theme === 'light' ? setTheme('dark') : setTheme('light') }}>
-                {theme === 'light' ? <Lightbulb /> : <Moon />}
+                {theme === 'light' ? <IconNotification /> : <Moon />}
                 {theme === 'light' ? 'Swtich to dark' : 'Swtich to light'}
               </DropdownMenuItem>
             </DropdownMenuGroup>
