@@ -148,22 +148,22 @@ import { SidebarItems } from "./sidebar-items"
 //   ],
 // }
 const documents = [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: IconDatabase,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: IconReport,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: IconFileWord,
-    },
-  ]
+  {
+    name: "Data Library",
+    url: "#",
+    icon: IconDatabase,
+  },
+  {
+    name: "Reports",
+    url: "#",
+    icon: IconReport,
+  },
+  {
+    name: "Word Assistant",
+    url: "#",
+    icon: IconFileWord,
+  },
+]
 
 const userData = {
   navMain: [
@@ -264,6 +264,11 @@ const adminData = {
       icon: IconDashboard,
     },
     {
+      title: "Case Type",
+      url: "/admin/case_type",
+      icon: Files,
+    },
+    {
       title: "Attorney",
       url: "/admin/attorney",
       icon: Gavel,
@@ -272,11 +277,6 @@ const adminData = {
       title: "Case Study",
       url: "/admin/case_study",
       icon: CalendarClock,
-    },
-    {
-      title: "Case Type",
-      url: "/admin/case_type",
-      icon: Files,
     },
   ],
   navMainSecondary: [
